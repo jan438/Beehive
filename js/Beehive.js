@@ -565,6 +565,7 @@ var Deck = (function () {
 			_deck2.cards.forEach(function (card, i) {
 				card.disableDragging();
 				card.disableFlipping();
+				console.log(i + ":" + cardtosymbols(card));
 				if (i === 51) {
 					next();
 				}
