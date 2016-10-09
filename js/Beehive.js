@@ -561,7 +561,7 @@ var Deck = (function () {
   var sort = {
     deck: function deck(_deck2) {
       _deck2.sort = _deck2.queued(sort);
-      function sort(next, reverse) {
+      function sort(next) {
         var cards = _deck2.cards;
         cards.sort(function (a, b) {
             return b.i - a.i;
@@ -577,7 +577,7 @@ var Deck = (function () {
     },
     card: function card(_card2) {
       var $el = _card2.$el;
-      _card2.sort = function (i, len, cb, reverse) {
+      _card2.sort = function (i, len, cb) {
         var z = i / 4;
         var delay = i * 10;
         _card2.animateTo({
