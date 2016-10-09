@@ -564,18 +564,14 @@ var Deck = (function () {
       function sort(next, reverse) {
         var cards = _deck2.cards;
         cards.sort(function (a, b) {
-          if (reverse) {
-            return a.i - b.i;
-          } else {
             return b.i - a.i;
-          }
         });
         cards.forEach(function (card, i) {
           card.sort(i, cards.length, function (i) {
             if (i === cards.length - 1) {
               next();
             }
-          }, reverse);
+          });
         });
       }
     },
