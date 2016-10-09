@@ -559,49 +559,18 @@ var Deck = (function () {
     }
   };
   var sort = {
-    deck: function deck(_deck2) {
-      _deck2.sort = _deck2.queued(sort);
-      function sort(next) {
-        var cards = _deck2.cards;
-        cards.sort(function (a, b) {
-            return b.i - a.i;
-        });
-        cards.forEach(function (card, i) {
-          card.sort(i, cards.length, function (i) {
-            if (i === cards.length - 1) {
-              next();
-            }
-          });
-        });
-      }
-    },
-    card: function card(_card2) {
-      var $el = _card2.$el;
-      _card2.sort = function (i, len, cb) {
-        var z = i / 4;
-        var delay = i * 10;
-        _card2.animateTo({
-          delay: delay,
-          duration: 400,
-          x: -z,
-          y: -150,
-          rot: 0,
-          onComplete: function onComplete() {
-            $el.style.zIndex = i;
-          }
-        });
-        _card2.animateTo({
-          delay: delay + 500,
-          duration: 400,
-          x: -z,
-          y: -z,
-          rot: 0,
-          onComplete: function onComplete() {
-            cb(i);
-          }
-        });
-      };
-    }
+	deck: function deck(_deck2) {
+		_deck2.sort = _deck2.queued(sort);
+		function sort(next) {
+			_deck2.cards.forEach(function (card, i) {
+				card.disableDragging();
+				card.disableFlipping();
+				if (i === 51) {
+					next();
+				}
+			});
+		};
+	}
   };
   function plusminus(value) {
     var plusminus = Math.round(Math.random()) ? -1 : 1;
