@@ -562,6 +562,7 @@ var Deck = (function () {
 	deck: function deck(_deck2) {
 		_deck2.sort = _deck2.queued(sort);
 		function sort(next) {
+			var cards = _deck2.cards;
 			_deck2.cards.forEach(function (card, i) {
 				card.disableDragging();
 				card.disableFlipping();
