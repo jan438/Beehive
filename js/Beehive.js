@@ -671,6 +671,7 @@ var Deck = (function () {
 				if (i <= 9) {
 					card.setSide('back');
 					hive.push(card);
+					$("#counthivecards").html("Hive:" + hive.length);
 					if (i === 9) {
 						card.setSide('front');
 						card.enableDragging();
