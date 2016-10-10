@@ -458,6 +458,7 @@ var Deck = (function () {
 			}
 			else {
 				gardencards[i].push(self);
+				$("#countcards"+i).html(gardencards[i].length);
 				switch (source) {
 					case 1: hive.splice(-1,1);
 						if (hive.length > 0) hive[hive.length - 1].setSide('front');
@@ -675,8 +676,10 @@ var Deck = (function () {
 					}
 				}
 				if (i > 9 && i <= 15) {
+					var index = i - 10;
 					card.setSide('front');
-					gardencards[i - 10].push(card);
+					gardencards[index].push(card);
+					$("#countcards"+index).html(gardencards[index].length);
 				}
 				if (i > 15) {
 					pack.push(card);
