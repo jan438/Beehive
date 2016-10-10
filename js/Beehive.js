@@ -564,6 +564,11 @@ var Deck = (function () {
 		function sort(next) {
 			for (var i = 0; i < countgardencards; i++) {
 				console.log((36 + i) + ":" + cardtosymbols(_deck2.cards[36 + i]));
+				for (var j = i + 1; j < countgardencards; j++) {
+					if (_deck2.cards[36 + j].rank === _deck2.cards[36 + i].rank) {
+						console.log("Same rank:" + (36 + j) + ":" + (36 + i));
+					}
+				}
 			}
 			var tempcard = _deck2.cards[41];
 			_deck2.cards[41] = _deck2.cards[40];
