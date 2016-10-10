@@ -403,16 +403,16 @@ div#counthivecards {
 	font-family: "Alice Regular", cursive;
 	font-weight: bold;
 	font-size: 20px;
-	left: 200px;
-	top: -100px;
+	left: 160px;
+	top: -95px;
 }
 div#countpackcards {
 	position: absolute;
 	font-family: "Alice Regular", cursive;
 	font-weight: bold;
 	font-size: 20px;
-	left: 200px;
-	top: 200px;
+	left: 160px;
+	top: 205px;
 }
 div#countcards0 {
 	position: absolute;
