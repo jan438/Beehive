@@ -562,14 +562,16 @@ var Deck = (function () {
 	deck: function deck(_deck2) {
 		_deck2.sort = _deck2.queued(sort);
 		function sort(next) {
+			var startindex = 0;
 			for (var i = 0; i < countgardencards; i++) {
 				for (var j = i + 1; j < countgardencards; j++) {
 					if (_deck2.cards[36 + j].rank === _deck2.cards[36 + i].rank) {
-						for (var k = 0; k < 36; k++) {
+						for (var k = startindex; k < 36; k++) {
 							if (_deck2.cards[k].rank !== _deck2.cards[36 + j].rank) {
 								var tempcard = _deck2.cards[k];
 								_deck2.cards[k] = _deck2.cards[36 + j];
 								_deck2.cards[36 + j] = tempcard;
+								startindex = k + 1;
 								break;
 							}
 						}
