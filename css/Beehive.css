@@ -5,6 +5,10 @@
   margin: 0;
   padding: 0;
 }
+@font-face {
+    font-family: "Alice Regular";
+    src: url(../../fonts/Alice-Regular.ttf) format("truetype");
+}
 html,
 body {
   height: 100%;
@@ -393,4 +397,46 @@ body {
 }
 .selected {
   border: 3px solid #8c8c8c;
+}
+div#countcards0 {
+	position: absolute;
+	font-family: "Alice Regular", cursive;
+	font-size: 20px;
+	left: -250px;
+	top: -100px;
+}
+div#countcards1 {
+	position: absolute;
+	font-family: "Alice Regular", cursive;
+	font-size: 20px;
+	left: -150px;
+	top: -100px;
+}
+div#countcards2 {
+	position: absolute;
+	font-family: "Alice Regular", cursive;
+	font-size: 20px;
+	left: -50px;
+	top: -100px;
+}
+div#countcards3 {
+	position: absolute;
+	font-family: "Alice Regular", cursive;
+	font-size: 20px;
+	left: -250px;
+	top: 200px;
+}
+div#countcards4 {
+	position: absolute;
+	font-family: "Alice Regular", cursive;
+	font-size: 20px;
+	left: -150px;
+	top: 200px;
+}
+div#countcards5 {
+	position: absolute;
+	font-family: "Alice Regular", cursive;
+	font-size: 20px;
+	left: -50px;
+	top: 200px;
 }
