@@ -567,12 +567,17 @@ var Deck = (function () {
 				for (var j = i + 1; j < countgardencards; j++) {
 					if (_deck2.cards[36 + j].rank === _deck2.cards[36 + i].rank) {
 						console.log("Same rank:" + (36 + j) + ":" + (36 + i));
+						for (var k = 0; k < 36; k++) {
+							if (_deck2.cards[k].rank !== _deck2.cards[36 + j].rank) {
+								var tempcard = _deck2.cards[k];
+								_deck2.cards[k] = _deck2.cards[36 + j];
+								_deck2.cards[36 + j] = tempcard;
+								break;
+							}
+						}
 					}
 				}
 			}
-			var tempcard = _deck2.cards[41];
-			_deck2.cards[41] = _deck2.cards[40];
-			_deck2.cards[40] = tempcard;
 			_deck2.cards.forEach(function (card, i) {
 				card.disableDragging();
 				card.disableFlipping();
