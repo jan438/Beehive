@@ -348,6 +348,7 @@ var Deck = (function () {
 				cardstomove.push(pack[pack.length - 1]);
 				cardstomove[cardstomove.length - 1].$el.style.zIndex = maxZ++;
 				pack.splice(-1,1);
+				$("#countpackcards").html("Pack:" + pack.length);
 			}
 		}
 		for (var i = cardstomove.length - 1; i >= 0; i--) {
@@ -683,6 +684,7 @@ var Deck = (function () {
 				}
 				if (i > 15) {
 					pack.push(card);
+					$("#countpackcards").html("Pack:" + pack.length);
 				}
 				if (i === 51) {
 					next();
