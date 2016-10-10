@@ -567,7 +567,7 @@ var Deck = (function () {
 				for (var j = i + 1; j < countgardencards; j++) {
 					if (_deck2.cards[36 + j].rank === _deck2.cards[36 + i].rank) {
 						for (var k = startindex; k < 36; k++) {
-							if (_deck2.cards[k].rank !== _deck2.cards[36 + j].rank) {
+							if (_deck2.cards[k].rank !== _deck2.cards[36].rank && _deck2.cards[k].rank !== _deck2.cards[37].rank && _deck2.cards[k].rank !== _deck2.cards[38].rank && _deck2.cards[k].rank !== _deck2.cards[39].rank && _deck2.cards[k].rank !== _deck2.cards[40].rank && _deck2.cards[k].rank !== _deck2.cards[41].rank) {
 								var tempcard = _deck2.cards[k];
 								_deck2.cards[k] = _deck2.cards[36 + j];
 								_deck2.cards[36 + j] = tempcard;
