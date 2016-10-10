@@ -562,6 +562,9 @@ var Deck = (function () {
 	deck: function deck(_deck2) {
 		_deck2.sort = _deck2.queued(sort);
 		function sort(next) {
+			for (var i = 0; i < countgardencards; i++) {
+				console.log((36 + i) + ":" + cardtosymbols(_deck2.cards[36 + i]));
+			}
 			var tempcard = _deck2.cards[41];
 			_deck2.cards[41] = _deck2.cards[40];
 			_deck2.cards[40] = tempcard;
