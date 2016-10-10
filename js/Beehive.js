@@ -563,10 +563,8 @@ var Deck = (function () {
 		_deck2.sort = _deck2.queued(sort);
 		function sort(next) {
 			for (var i = 0; i < countgardencards; i++) {
-				console.log((36 + i) + ":" + cardtosymbols(_deck2.cards[36 + i]));
 				for (var j = i + 1; j < countgardencards; j++) {
 					if (_deck2.cards[36 + j].rank === _deck2.cards[36 + i].rank) {
-						console.log("Same rank:" + (36 + j) + ":" + (36 + i));
 						for (var k = 0; k < 36; k++) {
 							if (_deck2.cards[k].rank !== _deck2.cards[36 + j].rank) {
 								var tempcard = _deck2.cards[k];
@@ -579,8 +577,6 @@ var Deck = (function () {
 				}
 			}
 			_deck2.cards.forEach(function (card, i) {
-				card.disableDragging();
-				card.disableFlipping();
 				console.log(i + ":" + cardtosymbols(card));
 				if (i === 51) {
 					next();
