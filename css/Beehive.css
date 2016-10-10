@@ -10,17 +10,21 @@ body {
   height: 100%;
 }
 body {
-  background-color: #45a173;
-  color: #333;
-  font-family: 'Open Sans', sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  overflow: hidden;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  text-size-adjust: 100%;
+	-webkit-perspective: 8000px;
+	-moz-perspective: 8000px;
+	-ms-perspective: 8000px;
+	-o-perspective: 8000px;
+	perspective: 8000px;
+	background-image:-webkit-radial-gradient(
+		50% 20%, #0055ff, #002266);
+	background-image:-moz-radial-gradient(
+		50% 20%, #0055ff, #002266);
+	background-image:-o-radial-gradient(
+		50% 20%, #0055ff, #002266);
+	background-position:center;
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+	overflow: hidden;
 }
 #container {
   position: fixed;
