@@ -565,7 +565,7 @@ var Deck = (function () {
 		_deck2.sort = _deck2.queued(sort);
 		function sort(next) {
 			var startindex = 0;
-			for (var i = 0; i < countgardencards; i++) {
+			for (var i = 0; i < countgardencards - 1; i++) {
 				for (var j = i + 1; j < countgardencards; j++) {
 					if (_deck2.cards[36 + j].rank === _deck2.cards[36 + i].rank) {
 						for (var k = startindex; k < 36; k++) {
