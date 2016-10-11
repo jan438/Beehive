@@ -440,6 +440,7 @@ var Deck = (function () {
 					gardencards[result].push(self);
 					$("#countcards"+result).html(gardencards[result].length);
 					hive.splice(-1,1);
+					$("#counthivecards").html("Hive:" + hive.length);
 				}
 				break;
 			case 2: result = workingpilemovecheck(self);
