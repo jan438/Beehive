@@ -425,8 +425,34 @@ var Deck = (function () {
 	if (notmoved && longpress) {
 		switch (source) {
 			case 1: result = hivemovecheck(self);
+				if (result >= 0) {
+					self.animateTo({
+						delay: 1000,
+						duration: 250,
+						x: gardenposition[result][0],
+						y: gardenposition[result][1],
+						rot: 0,
+						onStart: function onStart() {
+						},
+						onComplete: function onComplete() {
+						}
+					});
+				}
 				break;
 			case 2: result = workingpilemovecheck(self);
+				if (result >= 0) {
+					self.animateTo({
+						delay: 1000,
+						duration: 250,
+						x: gardenposition[result][0],
+						y: gardenposition[result][1],
+						rot: 0,
+						onStart: function onStart() {
+						},
+						onComplete: function onComplete() {
+						}
+					});
+				}
 				break;
 			case -1:result = -1;
 				break;
