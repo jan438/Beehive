@@ -440,6 +440,7 @@ var Deck = (function () {
 					gardencards[result].push(self);
 					$("#countcards"+result).html(gardencards[result].length);
 					hive.splice(-1,1);
+					if (hive.length > 0) hive[hive.length - 1].setSide('front');
 					$("#counthivecards").html("Hive:" + hive.length);
 				}
 				break;
@@ -720,11 +721,11 @@ var Deck = (function () {
 				card.Beehive(i, len, function (i) {
 				if (i <= 9) {
 					card.setSide('back');
+					card.enableDragging();
 					hive.push(card);
 					$("#counthivecards").html("Hive:" + hive.length);
 					if (i === 9) {
 						card.setSide('front');
-						card.enableDragging();
 					}
 				}
 				if (i > 9 && i <= 15) {
