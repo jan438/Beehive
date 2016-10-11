@@ -465,6 +465,7 @@ var Deck = (function () {
 		}
 	}
 	else {
+		result = false;
 		for (var i = 0; i < countgardencards; i++) {
 			var position = gardenposition[i];
 			if (self.x >= (position[0] - deltaxposition) && self.x <= (position[0] + deltaxposition) && self.y >= (position[1] - deltayposition) && self.y <= (position[1] + deltayposition)) {
@@ -514,6 +515,19 @@ var Deck = (function () {
 					});
 				}
 			}
+		}
+		if (!result && source > 0) {
+			self.animateTo({
+				delay: 1000,
+				duration: 250,
+				x: startxposition,
+				y: startyposition,
+				rot: 0,
+				onStart: function onStart() {
+				},
+				onComplete: function onComplete() {
+				}
+			});
 		}
 	}
 	}
