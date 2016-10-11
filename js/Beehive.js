@@ -77,40 +77,30 @@ function cardtosymbols(card) {
 	symbols = symbols + symbol1 + symbol2;
 	return symbols;
 }
-function hivemovecheck(card, index) {
-	console.log("hivemovecheck:" + cardtosymbols(card) + "index:" + index);
-	var result = false;
-	if (index < 0) {
-		for (var i = 0; i < countgardencards; i++) {
-			if (gardencards[i].length > 0) {
-				if (gardencards[i][gardencards[i].length - 1].rank === card.rank) {
-					console.log(i + ":" + cardtosymbols(gardencards[i][gardencards[i].length - 1]));
-					result = true;
-				}
+function hivemovecheck(card) {
+	var result = -1;
+	for (var i = 0; i < countgardencards; i++) {
+		if (gardencards[i].length > 0) {
+			if (gardencards[i][gardencards[i].length - 1].rank === card.rank) {
+				console.log(i + ":" + cardtosymbols(gardencards[i][gardencards[i].length - 1]));
+				result = i;
 			}
 		}
 	}
-	else {
-		result = (gardencards[index][gardencards[index].length - 1].rank === card.rank)
-	}
+	console.log("hivemovecheck:" + cardtosymbols(card) + "index:" + result);
 	return result;
 }
-function workingpilemovecheck(card, index) {
-	console.log("workingpilemovecheck:" + cardtosymbols(card) + "index:" + index);
-	var result = false;
-	if (index < 0) {
-		for (var i = 0; i < countgardencards; i++) {
-			if (gardencards[i].length > 0) {
-				if (gardencards[i][gardencards[i].length - 1].rank === card.rank) {
-					console.log(i + ":" + cardtosymbols(gardencards[i][gardencards[i].length - 1]));
-					result = true;
-				}
+function workingpilemovecheck(card) {
+	var result = -1;
+	for (var i = 0; i < countgardencards; i++) {
+		if (gardencards[i].length > 0) {
+			if (gardencards[i][gardencards[i].length - 1].rank === card.rank) {
+				console.log(i + ":" + cardtosymbols(gardencards[i][gardencards[i].length - 1]));
+				result = i;
 			}
 		}
 	}
-	else {
-		result = (gardencards[index][gardencards[index].length - 1].rank === card.rank)
-	}
+	console.log("workingpilemovecheck:" + cardtosymbols(card) + "index:" + result);
 	return result;
 }
 var Deck = (function () {
@@ -416,73 +406,85 @@ var Deck = (function () {
 		longpress = true;
 		shortpress = false;
 	}
-        if (e.type === 'mouseup') {
-          removeListener(window, 'mousemove', onMousemove);
-          removeListener(window, 'mouseup', onMouseup);
-        } else {
-          removeListener(window, 'touchmove', onMousemove);
-          removeListener(window, 'touchend', onMouseup);
-        }
-        if (!isDraggable) {
-          return;
-        }
+	if (e.type === 'mouseup') {
+		removeListener(window, 'mousemove', onMousemove);
+		removeListener(window, 'mouseup', onMouseup);
+	} else {
+		removeListener(window, 'touchmove', onMousemove);
+		removeListener(window, 'touchend', onMouseup);
+	}
+	if (!isDraggable) {
+		return;
+	}
 	self.x = self.x + pos.x - startPos.x;
 	self.y = self.y + pos.y - startPos.y;
 	destination = -1;
 	notmoved = (Math.abs(self.x - startxposition) < 10) && (Math.abs(self.y - startyposition) < 10);
 	console.log("Source: " + source + " notmoved: " + notmoved);
 	var result;
-	for (var i = 0; i < countgardencards; i++) {
-		var position = gardenposition[i];
-		if (self.x >= (position[0] - deltaxposition) && self.x <= (position[0] + deltaxposition) && self.y >= (position[1] - deltayposition) && self.y <= (position[1] + deltayposition)) {
-			console.log("Destination: " + i);
-			switch (source) {
-				case 1: result = (gardencards[i][gardencards[i].length - 1].rank === self.rank);
-					break;
-				case 2: result = (gardencards[i][gardencards[i].length - 1].rank === self.rank);
-					break;
-				case -1:result = false;
-					break;
-			}
-			if (!result) {
-				self.animateTo({
-					delay: 1000,
-					duration: 250,
-					x: startxposition,
-					y: startyposition,
-					rot: 0,
-					onStart: function onStart() {
-					},
-					onComplete: function onComplete() {
-					}
-				});
-			}
-			else {
-				gardencards[i].push(self);
-				$("#countcards"+i).html(gardencards[i].length);
+	if (notmoved && longpress) {
+		switch (source) {
+			case 1: result = hivemovecheck(self);
+				break;
+			case 2: result = workingpilemovecheck(self);
+				break;
+			case -1:result = -1;
+				break;
+		}
+	}
+	else {
+		for (var i = 0; i < countgardencards; i++) {
+			var position = gardenposition[i];
+			if (self.x >= (position[0] - deltaxposition) && self.x <= (position[0] + deltaxposition) && self.y >= (position[1] - deltayposition) && self.y <= (position[1] + deltayposition)) {
+				console.log("Destination: " + i);
 				switch (source) {
-					case 1: hive.splice(-1,1);
-						if (hive.length > 0) hive[hive.length - 1].setSide('front');
+					case 1: result = (gardencards[i][gardencards[i].length - 1].rank === self.rank);
 						break;
-					case 2: workingpile.splice(-1,1);
+					case 2: result = (gardencards[i][gardencards[i].length - 1].rank === self.rank);
 						break;
-					case -1:break;
+					case -1:result = false;
+						break;
 				}
-				self.animateTo({
-					delay: 1000,
-					duration: 250,
-					x: gardenposition[i][0],
-					y: gardenposition[i][1],
-					rot: 0,
-					onStart: function onStart() {
-					},
-					onComplete: function onComplete() {
+				if (!result) {
+					self.animateTo({
+						delay: 1000,
+						duration: 250,
+						x: startxposition,
+						y: startyposition,
+						rot: 0,
+						onStart: function onStart() {
+						},
+						onComplete: function onComplete() {
+						}
+					});
+				}
+				else {
+					gardencards[i].push(self);
+					$("#countcards"+i).html(gardencards[i].length);
+					switch (source) {
+						case 1: hive.splice(-1,1);
+							if (hive.length > 0) hive[hive.length - 1].setSide('front');
+							break;
+						case 2: workingpile.splice(-1,1);
+							break;
+						case -1:break;
 					}
-				});
+					self.animateTo({
+						delay: 1000,
+						duration: 250,
+						x: gardenposition[i][0],
+						y: gardenposition[i][1],
+						rot: 0,
+						onStart: function onStart() {
+						},
+						onComplete: function onComplete() {
+						}
+					});
+				}
 			}
 		}
 	}
-      }
+	}
     }
     function mount(target) {
       target.appendChild($el);
