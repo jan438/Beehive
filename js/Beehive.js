@@ -437,6 +437,9 @@ var Deck = (function () {
 						onComplete: function onComplete() {
 						}
 					});
+					gardencards[result].push(self);
+					$("#countcards"+result).html(gardencards[result].length);
+					hive.splice(-1,1);
 				}
 				break;
 			case 2: result = workingpilemovecheck(self);
@@ -452,6 +455,9 @@ var Deck = (function () {
 						onComplete: function onComplete() {
 						}
 					});
+					gardencards[result].push(self);
+					$("#countcards"+result).html(gardencards[result].length);
+					workingpile.splice(-1,1);
 				}
 				break;
 			case -1:result = -1;
