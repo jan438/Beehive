@@ -20,15 +20,15 @@ gardenposition[4] = [-150, 150, 0];
 gardenposition[5] = [-50, 150, 0];
 var gardencards = [[],[],[],[],[],[]];
 var pack = [];
-var workingpile = [];
-var workingpilez = 0;
-var workingpilex = 100;
-var workingpiley = 150;
+var workpile = [];
+var workpilez = 0;
+var workpilex = 100;
+var workpiley = 150;
 var cardstomove;
 const minpack = 175;
 const maxpack = 225;
-const minworkingpile = 75;
-const maxworkingpile = 125;
+const minworkpile = 75;
+const maxworkpile = 125;
 var source, destination;
 const deltaxposition = 25;
 const deltayposition = 25;
@@ -90,7 +90,7 @@ function hivemovecheck(card) {
 	console.log("hivemovecheck:" + cardtosymbols(card) + "index:" + result);
 	return result;
 }
-function workingpilemovecheck(card) {
+function workpilemovecheck(card) {
 	var result = -1;
 	for (var i = 0; i < countgardencards; i++) {
 		if (gardencards[i].length > 0) {
@@ -100,7 +100,7 @@ function workingpilemovecheck(card) {
 			}
 		}
 	}
-	console.log("workingpilemovecheck:" + cardtosymbols(card) + "index:" + result);
+	console.log("workpilemovecheck:" + cardtosymbols(card) + "index:" + result);
 	return result;
 }
 var Deck = (function () {
@@ -325,10 +325,10 @@ var Deck = (function () {
 			$("#" + hive[hive.length - 1].$el.id).addClass('selected');
 		}
 	}
-	if (self.x >= minworkingpile && self.x <= maxworkingpile && self.y > 0) {
-		if (workingpile.length > 0) {
+	if (self.x >= minworkpile && self.x <= maxworkpile && self.y > 0) {
+		if (workpile.length > 0) {
 			source = 2;
-			$("#" + workingpile[workingpile.length - 1].$el.id).addClass('selected');
+			$("#" + workpile[workpile.length - 1].$el.id).addClass('selected');
 		}
 	}
 	if (self.x >= minpack && self.x <= maxpack && self.y > 0) {
@@ -345,13 +345,13 @@ var Deck = (function () {
 			cardstomove[i].setSide('front');
 			cardstomove[i].enableDragging();
 			cardstomove[i].disableFlipping();
-			workingpile.push(cardstomove[i]);
-			workingpilez = workingpilez + 0.25;
-			workingpile[workingpile.length - 1].animateTo({
+			workpile.push(cardstomove[i]);
+			workpilez = workpilez + 0.25;
+			workpile[workpile.length - 1].animateTo({
 				delay: 1000,
 				duration: 250,
-				x: workingpilex + workingpilez,
-				y: workingpiley,
+				x: workpilex + workpilez,
+				y: workpiley,
 				rot: 0,
 				onStart: function onStart() {
 				},
@@ -444,7 +444,7 @@ var Deck = (function () {
 					$("#counthivecards").html("Hive:" + hive.length);
 				}
 				break;
-			case 2: result = workingpilemovecheck(self);
+			case 2: result = workpilemovecheck(self);
 				if (result >= 0) {
 					self.animateTo({
 						delay: 1000,
@@ -459,7 +459,7 @@ var Deck = (function () {
 					});
 					gardencards[result].push(self);
 					$("#countcards"+result).html(gardencards[result].length);
-					workingpile.splice(-1,1);
+					workpile.splice(-1,1);
 				}
 				break;
 			case -1:result = -1;
@@ -501,7 +501,7 @@ var Deck = (function () {
 							if (hive.length > 0) hive[hive.length - 1].setSide('front');
 							$("#counthivecards").html("Hive:" + hive.length);
 							break;
-						case 2: workingpile.splice(-1,1);
+						case 2: workpile.splice(-1,1);
 							break;
 						case -1:break;
 					}
@@ -712,7 +712,7 @@ var Deck = (function () {
 		function Beehive(next) {
 			hive = [];
 			pack = [];
-			workingpile = [];
+			workpile = [];
 			gardencards = [[],[],[],[],[],[]];
 			var cards = _deck4.cards;
 			var len = cards.length;
