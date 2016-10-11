@@ -497,6 +497,7 @@ var Deck = (function () {
 					switch (source) {
 						case 1: hive.splice(-1,1);
 							if (hive.length > 0) hive[hive.length - 1].setSide('front');
+							$("#counthivecards").html("Hive:" + hive.length);
 							break;
 						case 2: workingpile.splice(-1,1);
 							break;
