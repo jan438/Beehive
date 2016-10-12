@@ -414,6 +414,14 @@ div#countpackcards {
 	left: 160px;
 	top: 205px;
 }
+div#countworkcards {
+	position: absolute;
+	font-family: "Alice Regular", cursive;
+	font-weight: bold;
+	font-size: 20px;
+	left: 100px;
+	top: 205px;
+}
 div#countcards0 {
 	position: absolute;
 	font-family: "Alice Regular", cursive;

@@ -380,6 +380,7 @@ var Deck = (function () {
 				}
 			});
 		}
+		$("#countworkcards").html(workpile.length);
 	}
       e.preventDefault();
 	if (e.type === 'mousedown') {
