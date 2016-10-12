@@ -52,6 +52,7 @@ function reset() {
 		});
 	}
 	workpile = [];
+	$("#countworkcards").html(workpile.length);
 }
 function cardtosymbols(card) {
 	var symbols = "";
