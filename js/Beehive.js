@@ -32,6 +32,27 @@ const maxworkpile = 125;
 var source, destination;
 const deltaxposition = 25;
 const deltayposition = 25;
+function reset() {
+//	console.log("Reset");
+	workpilez = 0;
+	for (var j = 0; j < workpile.length; j++) {
+		pack.push(workpile[j]);
+		$("#countpackcards").html("Pack:" + pack.length);
+		workpile[j].setSide('back');
+		workpile[j].animateTo({
+			delay: 1000,
+			duration: 250,
+			x: packposition[0] - j * 0.25,
+			y: packposition[1],
+			rot: 0,
+			onStart: function onStart() {
+			},
+			onComplete: function onComplete() {
+			}
+		});
+	}
+	workpile = [];
+}
 function cardtosymbols(card) {
 	var symbols = "";
 	var symbol1 = "";
@@ -346,7 +367,7 @@ var Deck = (function () {
 			cardstomove[i].enableDragging();
 			cardstomove[i].disableFlipping();
 			workpile.push(cardstomove[i]);
-			workpilez = workpilez + 0.25;
+			workpilez = workpilez - 0.25;
 			workpile[workpile.length - 1].animateTo({
 				delay: 1000,
 				duration: 250,
@@ -460,6 +481,9 @@ var Deck = (function () {
 					gardencards[result].push(self);
 					$("#countcards"+result).html(gardencards[result].length);
 					workpile.splice(-1,1);
+				}
+				else {
+					if (pack.length === 0) reset();
 				}
 				break;
 			case -1:result = -1;
@@ -758,7 +782,7 @@ var Deck = (function () {
 				var ypos = gardenposition[i - 10][1];
 			}
 			if (i > 15) {
-				var xpos = packposition[0];
+				var xpos = packposition[0] - (i - 16) * 0.25;
 				var ypos = packposition[1];
 			}
 			_card4.animateTo({
