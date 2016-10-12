@@ -358,7 +358,6 @@ var Deck = (function () {
 		for (var i = 0; i < 3; i++) {
 			if (pack.length > 0) {
 				cardstomove.push(pack[pack.length - 1]);
-				cardstomove[cardstomove.length - 1].$el.style.zIndex = maxZ++;
 				pack.splice(-1,1);
 				$("#countpackcards").html("Pack:" + pack.length);
 			}
@@ -367,6 +366,7 @@ var Deck = (function () {
 			cardstomove[i].setSide('front');
 			cardstomove[i].enableDragging();
 			cardstomove[i].disableFlipping();
+			cardstomove[i].$el.style.zIndex = maxZ++;
 			workpile.push(cardstomove[i]);
 			workpilez = workpilez - 0.25;
 			workpile[workpile.length - 1].animateTo({
