@@ -483,6 +483,7 @@ var Deck = (function () {
 					gardencards[result].push(self);
 					$("#countcards"+result).html(gardencards[result].length);
 					workpile.splice(-1,1);
+					$("#countworkcards").html(workpile.length);
 				}
 				else {
 					if (pack.length === 0) reset();
@@ -528,6 +529,7 @@ var Deck = (function () {
 							$("#counthivecards").html("Hive:" + hive.length);
 							break;
 						case 2: workpile.splice(-1,1);
+							$("#countworkcards").html(workpile.length);
 							break;
 						case -1:break;
 					}
@@ -765,6 +767,7 @@ var Deck = (function () {
 					$("#countpackcards").html("Pack:" + pack.length);
 				}
 				if (i === 51) {
+					$("#countworkcards").html(workpile.length);
 					next();
 				}
 			});
