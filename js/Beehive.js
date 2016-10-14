@@ -461,6 +461,12 @@ var Deck = (function () {
 						}
 					});
 					gardencards[result].push(self);
+					if (gardencards[result].length === 4) {
+						for (var i = 3; i >= 0; i--) {
+							$("#" + gardencards[result][i].$el.id).hide();
+						}
+						gardencards[result] = [];
+					}
 					$("#countcards"+result).html(gardencards[result].length);
 					hive.splice(-1,1);
 					if (hive.length > 0) hive[hive.length - 1].setSide('front');
@@ -481,6 +487,12 @@ var Deck = (function () {
 						}
 					});
 					gardencards[result].push(self);
+					if (gardencards[result].length === 4) {
+						for (var i = 3; i >= 0; i--) {
+							$("#" + gardencards[result][i].$el.id).hide();
+						}
+						gardencards[result] = [];
+					}
 					$("#countcards"+result).html(gardencards[result].length);
 					workpile.splice(-1,1);
 					$("#countworkcards").html(workpile.length);
@@ -522,6 +534,12 @@ var Deck = (function () {
 				}
 				else {
 					gardencards[i].push(self);
+					if (gardencards[i].length === 4) {
+						for (var j = 3; j >= 0; j--) {
+							$("#" + gardencards[i][j].$el.id).hide();
+						}
+						gardencards[i] = [];
+					}
 					$("#countcards"+i).html(gardencards[i].length);
 					switch (source) {
 						case 1: hive.splice(-1,1);
