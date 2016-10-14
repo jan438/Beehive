@@ -481,6 +481,14 @@ var Deck = (function () {
 					hive.splice(-1,1);
 					if (hive.length > 0) hive[hive.length - 1].setSide('front');
 					$("#counthivecards").html("Hive:" + hive.length);
+					if (gardencards[0].length === 0 && gardencards[1].length === 0 && gardencards[2].length === 0 && gardencards[3].length === 0 && gardencards[4].length === 0 && gardencards[5].length === 0 && hive.length === 0 && pack.length === 0 && workpile.length === 0)
+						swal({
+							title: "<h4 id='swalgoedgedaan'>Goed gedaan!</h4>",
+							imageUrl: "Cards.png",
+							timer: 30000,
+							showConfirmButton: true,
+							html: true
+						});
 				}
 				break;
 			case 2: result = workpilemovecheck(self);
@@ -506,6 +514,14 @@ var Deck = (function () {
 					$("#countcards"+result).html(gardencards[result].length);
 					workpile.splice(-1,1);
 					$("#countworkcards").html(workpile.length);
+					if (gardencards[0].length === 0 && gardencards[1].length === 0 && gardencards[2].length === 0 && gardencards[3].length === 0 && gardencards[4].length === 0 && gardencards[5].length === 0 && hive.length === 0 && pack.length === 0 && workpile.length === 0)
+						swal({
+							title: "<h4 id='swalgoedgedaan'>Goed gedaan!</h4>",
+							imageUrl: "Cards.png",
+							timer: 30000,
+							showConfirmButton: true,
+							html: true
+						});
 				}
 				else {
 					if (pack.length === 0) reset();
@@ -567,6 +583,14 @@ var Deck = (function () {
 							break;
 						case -1:break;
 					}
+					if (gardencards[0].length === 0 && gardencards[1].length === 0 && gardencards[2].length === 0 && gardencards[3].length === 0 && gardencards[4].length === 0 && gardencards[5].length === 0 && hive.length === 0 && pack.length === 0 && workpile.length === 0)
+						swal({
+							title: "<h4 id='swalgoedgedaan'>Goed gedaan!</h4>",
+							imageUrl: "Cards.png",
+							timer: 30000,
+							showConfirmButton: true,
+							html: true
+						});
 					self.animateTo({
 						delay: 1000,
 						duration: 250,
