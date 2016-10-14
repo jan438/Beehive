@@ -109,6 +109,11 @@ function hivemovecheck(card) {
 			}
 		}
 	}
+	if (result === -1) {
+		for (var i = 0; i < countgardencards; i++) {
+			if (gardencards[i].length === 0) result = i;
+		}
+	}
 	console.log("hivemovecheck:" + cardtosymbols(card) + "index:" + result);
 	return result;
 }
@@ -120,6 +125,11 @@ function workpilemovecheck(card) {
 				console.log(i + ":" + cardtosymbols(gardencards[i][gardencards[i].length - 1]));
 				result = i;
 			}
+		}
+	}
+	if (result === -1) {
+		for (var i = 0; i < countgardencards; i++) {
+			if (gardencards[i].length === 0) result = i;
 		}
 	}
 	console.log("workpilemovecheck:" + cardtosymbols(card) + "index:" + result);
