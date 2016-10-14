@@ -522,9 +522,9 @@ var Deck = (function () {
 			if (self.x >= (position[0] - deltaxposition) && self.x <= (position[0] + deltaxposition) && self.y >= (position[1] - deltayposition) && self.y <= (position[1] + deltayposition)) {
 				console.log("Destination: " + i);
 				switch (source) {
-					case 1: result = (gardencards[i][gardencards[i].length - 1].rank === self.rank);
+					case 1: if (gardencards[i].length > 0) result = (gardencards[i][gardencards[i].length - 1].rank === self.rank);
 						break;
-					case 2: result = (gardencards[i][gardencards[i].length - 1].rank === self.rank);
+					case 2: if (gardencards[i].length > 0) result = (gardencards[i][gardencards[i].length - 1].rank === self.rank);
 						break;
 					case -1:result = false;
 						break;
