@@ -795,6 +795,7 @@ var Deck = (function () {
     card: function card(_card4) {
 		var $el = _card4.$el;
 		_card4.Beehive = function (i, len, cb) {
+			$("#" + _card4.$el.id).show();
 			var delay = i * 250;
 			if (i <= 9) {
 				var xpos = hiveposition[0];
