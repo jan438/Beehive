@@ -523,8 +523,14 @@ var Deck = (function () {
 				console.log("Destination: " + i);
 				switch (source) {
 					case 1: if (gardencards[i].length > 0) result = (gardencards[i][gardencards[i].length - 1].rank === self.rank);
+						else {
+							result = (hivemovecheck(self) === i);
+						}
 						break;
 					case 2: if (gardencards[i].length > 0) result = (gardencards[i][gardencards[i].length - 1].rank === self.rank);
+						else {
+							result = (workpilemovecheck(self) === i);
+						}
 						break;
 					case -1:result = false;
 						break;
