@@ -32,6 +32,8 @@ const maxworkpile = 125;
 var source, destination;
 const deltaxposition = 25;
 const deltayposition = 25;
+var movecount = 0;
+var resetcount = 0;
 function reset() {
 //	console.log("Reset");
 	workpilez = 0;
@@ -52,6 +54,17 @@ function reset() {
 		});
 	}
 	workpile = [];
+	resetcount = resetcount + 1;
+	if (resetcount > 10 && movecount === 0) {
+		swal({
+			title: "<h4 id='swalspelover'>Spel over!</h4>",
+			imageUrl: "Cards.png",
+			timer: 30000,
+			showConfirmButton: true,
+			html: true
+		});
+	}
+	movecount = 0;
 	$("#countworkcards").html(workpile.length);
 }
 function cardtosymbols(card) {
@@ -486,6 +499,7 @@ var Deck = (function () {
 					hive.splice(-1,1);
 					if (hive.length > 0) hive[hive.length - 1].setSide('front');
 					$("#counthivecards").html("Hive:" + hive.length);
+					movecount = movecount + 1;
 					if (gardencards[0].length === 0 && gardencards[1].length === 0 && gardencards[2].length === 0 && gardencards[3].length === 0 && gardencards[4].length === 0 && gardencards[5].length === 0 && hive.length === 0 && pack.length === 0 && workpile.length === 0)
 						swal({
 							title: "<h4 id='swalgoedgedaan'>Goed gedaan!</h4>",
@@ -519,6 +533,7 @@ var Deck = (function () {
 					$("#countcards"+result).html(gardencards[result].length);
 					workpile.splice(-1,1);
 					$("#countworkcards").html(workpile.length);
+					movecount = movecount + 1;
 					if (gardencards[0].length === 0 && gardencards[1].length === 0 && gardencards[2].length === 0 && gardencards[3].length === 0 && gardencards[4].length === 0 && gardencards[5].length === 0 && hive.length === 0 && pack.length === 0 && workpile.length === 0)
 						swal({
 							title: "<h4 id='swalgoedgedaan'>Goed gedaan!</h4>",
@@ -543,6 +558,7 @@ var Deck = (function () {
 						});
 						hive.push(self);
 						workpile.splice(-1,1);
+						movecount = movecount + 1;
 					}
 					else if (pack.length === 0) reset();
 				}
@@ -603,6 +619,7 @@ var Deck = (function () {
 							break;
 						case -1:break;
 					}
+					movecount = movecount + 1;
 					if (gardencards[0].length === 0 && gardencards[1].length === 0 && gardencards[2].length === 0 && gardencards[3].length === 0 && gardencards[4].length === 0 && gardencards[5].length === 0 && hive.length === 0 && pack.length === 0 && workpile.length === 0)
 						swal({
 							title: "<h4 id='swalgoedgedaan'>Goed gedaan!</h4>",
@@ -641,6 +658,7 @@ var Deck = (function () {
 				});
 				hive.push(self);
 				workpile.splice(-1,1);
+				movecount = movecount + 1;
 			}
 		}
 		if (!result && source > 0) {
@@ -838,6 +856,8 @@ var Deck = (function () {
 			pack = [];
 			workpile = [];
 			gardencards = [[],[],[],[],[],[]];
+			movecount = 0;
+			resetcount = 0;
 			var cards = _deck4.cards;
 			var len = cards.length;
 			__fontSize = fontSize();
