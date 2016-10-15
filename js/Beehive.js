@@ -625,6 +625,24 @@ var Deck = (function () {
 				}
 			}
 		}
+		if (self.x >= (hiveposition[0] - deltaxposition) && self.x <= (hiveposition[0] + deltaxposition) && self.y >= (hiveposition[1] - deltayposition) && self.y <= (hiveposition[1] + deltayposition)) {
+			result = (hive.length === 0);
+			if (result) {
+				self.animateTo({
+					delay: 1000,
+					duration: 250,
+					x: hiveposition[0],
+					y: hiveposition[1],
+					rot: 0,
+					onStart: function onStart() {
+					},
+					onComplete: function onComplete() {
+					}
+				});
+				hive.push(self);
+				workpile.splice(-1,1);
+			}
+		}
 		if (!result && source > 0) {
 			self.animateTo({
 				delay: 1000,
