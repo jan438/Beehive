@@ -128,6 +128,11 @@ function workpilemovecheck(card) {
 		}
 	}
 	if (result === -1) {
+		if (hive.length === 0) {
+			result = -2;
+		}
+	}
+	if (result === -1) {
 		for (var i = 0; i < countgardencards; i++) {
 			if (gardencards[i].length === 0) result = i;
 		}
@@ -524,7 +529,22 @@ var Deck = (function () {
 						});
 				}
 				else {
-					if (pack.length === 0) reset();
+					if (result === -2) {
+						self.animateTo({
+							delay: 1000,
+							duration: 250,
+							x: hiveposition[0],
+							y: hiveposition[1],
+							rot: 0,
+							onStart: function onStart() {
+							},
+							onComplete: function onComplete() {
+							}
+						});
+						hive.push(self);
+						workpile.splice(-1,1);
+					}
+					else if (pack.length === 0) reset();
 				}
 				break;
 			case -1:result = -1;
