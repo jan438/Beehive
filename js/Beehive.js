@@ -471,7 +471,7 @@ var Deck = (function () {
 	self.y = self.y + pos.y - startPos.y;
 	destination = -1;
 	notmoved = (Math.abs(self.x - startxposition) < 10) && (Math.abs(self.y - startyposition) < 10);
-	console.log("Source: " + source + " notmoved: " + notmoved);
+	console.log("Source:" + source + " notmoved:" + notmoved + " workpilelength:" + workpile.length);
 	var result;
 	if (notmoved && longpress) {
 		switch (source) {
