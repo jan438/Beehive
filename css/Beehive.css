@@ -470,3 +470,13 @@ h4#swalgoedgedaan {
 h4#swalspelover {
    color: darkgreen;
 }
+#Beehive {
+	position: absolute;
+	transition: .5s ease;
+	display: inline-block;
+	left: -425px;
+	top: 125px;
+	width: 58px;
+	height: 80px;
+	background-image: url('../Beehive.png');
+}

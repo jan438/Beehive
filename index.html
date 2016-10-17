@@ -21,10 +21,29 @@
 		<div style="color:#FFFFFF" id="countcards3">0</div>
 		<div style="color:#FFFFFF" id="countcards4">0</div>
 		<div style="color:#FFFFFF" id="countcards5">0</div>
+		<button id="Beehive" class="button"></button>
 	</div>
 	<div id="topbar">
 	</div>
 	<script src="js/Beehive.js"></script>
 	<script src="Beehive.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('#Beehive').bind('click', function() {
+				deck.queue(function (next) {
+					deck.cards.forEach(function (card, i) {
+						setTimeout(function () {
+							card.setSide('back')
+						}, i * 7.5)
+					});
+					next();
+				});
+				deck.shuffle();
+				deck.shuffle();
+				deck.sort();
+				deck.Beehive();
+			});
+		});
+	</script>
   </body>
 </html>
