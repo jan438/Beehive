@@ -118,7 +118,7 @@ function hivemovecheck(card) {
 		if (gardencards[i].length > 0) {
 			if (gardencards[i][gardencards[i].length - 1].rank === card.rank) {
 				console.log(i + ":" + cardtosymbols(gardencards[i][gardencards[i].length - 1]));
-				$("#" + gardencards[i][gardencards[i].length - 1].$el.id).addClass('tomove');
+				$("#" + gardencards[i][gardencards[i].length - 1].$el.id).addClass('tomovehive');
 				result = i;
 			}
 		}
@@ -366,6 +366,7 @@ var Deck = (function () {
 	for (var i = 0; i < 52; i++) {
 		$("#card" + i).removeClass('selected');
 		$("#card" + i).removeClass('tomove');
+		$("#card" + i).removeClass('tomovehive');
 	}
 	console.log(cardtosymbols(self) + " " + self.$el.id + " " + self.$el.style.zIndex);
 	var startPos = {};
@@ -413,6 +414,7 @@ var Deck = (function () {
 			});
 		}
 		var res = workpilemovecheck(workpile[workpile.length - 1]);
+		if (hive.length > 0 ) res = hivemovecheck(hive[hive.length - 1]);
 		$("#countworkcards").html(workpile.length);
 	}
       e.preventDefault();

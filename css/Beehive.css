@@ -490,3 +490,6 @@ button#Beehive:active {
 .tomove {
   box-shadow: 0 0 25px White;
 }
+.tomovehive {
+  box-shadow: 0 0 25px Yellow;
+}
