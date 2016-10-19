@@ -481,6 +481,8 @@ button#Beehive {
 	background-image: url('../Beehive.png');
 	border-radius: 15px;
 	box-shadow: 0 9px #999;
+	outline: 0;
+	border: 0;
 }
 button#Beehive:active {
   background-color: #3366cc;
