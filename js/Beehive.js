@@ -539,6 +539,7 @@ var Deck = (function () {
 					$("#countcards"+result).html(gardencards[result].length);
 					workpile.splice(-1,1);
 					$("#countworkcards").html(workpile.length);
+					if (workpile.length > 0) var res = workpilemovecheck(workpile[workpile.length - 1]);
 					movecount = movecount + 1;
 					if (gardencards[0].length === 0 && gardencards[1].length === 0 && gardencards[2].length === 0 && gardencards[3].length === 0 && gardencards[4].length === 0 && gardencards[5].length === 0 && hive.length === 0 && pack.length === 0 && workpile.length === 0)
 						swal({
