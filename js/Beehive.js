@@ -412,6 +412,7 @@ var Deck = (function () {
 				}
 			});
 		}
+		var res = workpilemovecheck(workpile[workpile.length - 1]);
 		$("#countworkcards").html(workpile.length);
 	}
       e.preventDefault();
