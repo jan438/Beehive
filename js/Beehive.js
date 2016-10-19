@@ -503,7 +503,10 @@ var Deck = (function () {
 					}
 					$("#countcards"+result).html(gardencards[result].length);
 					hive.splice(-1,1);
-					if (hive.length > 0) hive[hive.length - 1].setSide('front');
+					if (hive.length > 0) {
+						hive[hive.length - 1].setSide('front');
+						var res = hivemovecheck(hive[hive.length - 1]);
+					}
 					$("#counthivecards").html("Hive:" + hive.length);
 					movecount = movecount + 1;
 					if (gardencards[0].length === 0 && gardencards[1].length === 0 && gardencards[2].length === 0 && gardencards[3].length === 0 && gardencards[4].length === 0 && gardencards[5].length === 0 && hive.length === 0 && pack.length === 0 && workpile.length === 0)
@@ -618,7 +621,10 @@ var Deck = (function () {
 					$("#countcards"+i).html(gardencards[i].length);
 					switch (source) {
 						case 1: hive.splice(-1,1);
-							if (hive.length > 0) hive[hive.length - 1].setSide('front');
+							if (hive.length > 0) {
+								hive[hive.length - 1].setSide('front');
+								var res = hivemovecheck(hive[hive.length - 1]);
+							}
 							$("#counthivecards").html("Hive:" + hive.length);
 							break;
 						case 2: workpile.splice(-1,1);
