@@ -118,6 +118,7 @@ function hivemovecheck(card) {
 		if (gardencards[i].length > 0) {
 			if (gardencards[i][gardencards[i].length - 1].rank === card.rank) {
 				console.log(i + ":" + cardtosymbols(gardencards[i][gardencards[i].length - 1]));
+				$("#" + gardencards[i][gardencards[i].length - 1].$el.id).addClass('tomove');
 				result = i;
 			}
 		}
@@ -136,6 +137,7 @@ function workpilemovecheck(card) {
 		if (gardencards[i].length > 0) {
 			if (gardencards[i][gardencards[i].length - 1].rank === card.rank) {
 				console.log(i + ":" + cardtosymbols(gardencards[i][gardencards[i].length - 1]));
+				$("#" + gardencards[i][gardencards[i].length - 1].$el.id).addClass('tomove');
 				result = i;
 			}
 		}
