@@ -365,6 +365,7 @@ var Deck = (function () {
 	startTime = new Date().getTime();
 	for (var i = 0; i < 52; i++) {
 		$("#card" + i).removeClass('selected');
+		$("#card" + i).removeClass('tomove');
 	}
 	console.log(cardtosymbols(self) + " " + self.$el.id + " " + self.$el.style.zIndex);
 	var startPos = {};
