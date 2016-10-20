@@ -167,7 +167,11 @@ function workpilemovecheck(card) {
 	}
 	if (result === -1) {
 		for (var i = 0; i < countgardencards; i++) {
-			if (gardencards[i].length === 0) result = i;
+			if (gardencards[i].length === 0) {
+				if (hive.length === 0) {
+					result = i;
+				}
+			}
 		}
 	}
 	console.log("workpilemovecheck:" + cardtosymbols(card) + "index:" + result);
