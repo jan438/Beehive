@@ -525,6 +525,7 @@ var Deck = (function () {
 						hive[hive.length - 1].setSide('front');
 						hiveclasscheck(hive[hive.length - 1]);
 					}
+					if (workpile.length > 0) workpileclasscheck(workpile[workpile.length - 1]);
 					$("#counthivecards").html("Hive:" + hive.length);
 					movecount = movecount + 1;
 					if (gardencards[0].length === 0 && gardencards[1].length === 0 && gardencards[2].length === 0 && gardencards[3].length === 0 && gardencards[4].length === 0 && gardencards[5].length === 0 && hive.length === 0 && pack.length === 0 && workpile.length === 0)
