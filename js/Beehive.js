@@ -588,6 +588,8 @@ var Deck = (function () {
 						hive.push(self);
 						workpile.splice(-1,1);
 						movecount = movecount + 1;
+						$("#counthivecards").html("Hive:" + hive.length);
+						$("#countworkcards").html(workpile.length);
 					}
 					else if (pack.length === 0) reset();
 				}
@@ -691,6 +693,8 @@ var Deck = (function () {
 				hive.push(self);
 				workpile.splice(-1,1);
 				movecount = movecount + 1;
+				$("#counthivecards").html("Hive:" + hive.length);
+				$("#countworkcards").html(workpile.length);
 			}
 		}
 		if (!result && source > 0) {
