@@ -54,15 +54,17 @@ function reset() {
 		});
 	}
 	workpile = [];
-	resetcount = resetcount + 1;
-	if (resetcount > 10 && movecount === 0) {
-		swal({
-			title: "<h4 id='swalspelover'>Spel over!</h4>",
-			imageUrl: "Cards.png",
-			timer: 30000,
-			showConfirmButton: true,
-			html: true
-		});
+	if (movecount === 0) {
+		resetcount = resetcount + 1;
+		if (resetcount > 1) {
+			swal({
+				title: "<h4 id='swalspelover'>Spel over!</h4>",
+				imageUrl: "Cards.png",
+				timer: 30000,
+				showConfirmButton: true,
+				html: true
+			});
+		}
 	}
 	movecount = 0;
 	$("#countworkcards").html(workpile.length);
