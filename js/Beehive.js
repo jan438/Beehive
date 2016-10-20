@@ -131,13 +131,22 @@ function hivemovecheck(card) {
 	console.log("hivemovecheck:" + cardtosymbols(card) + "index:" + result);
 	return result;
 }
+function workpileclasscheck(card) {
+	for (var i = 0; i < countgardencards; i++) {
+		if (gardencards[i].length > 0) {
+			if (gardencards[i][gardencards[i].length - 1].rank === card.rank) {
+				$("#" + gardencards[i][gardencards[i].length - 1].$el.id).addClass('tomove');
+			}
+		}
+	}
+	console.log("workpileclasscheck:" + cardtosymbols(card));
+}
 function workpilemovecheck(card) {
 	var result = -1;
 	for (var i = 0; i < countgardencards; i++) {
 		if (gardencards[i].length > 0) {
 			if (gardencards[i][gardencards[i].length - 1].rank === card.rank) {
 				console.log(i + ":" + cardtosymbols(gardencards[i][gardencards[i].length - 1]));
-				$("#" + gardencards[i][gardencards[i].length - 1].$el.id).addClass('tomove');
 				result = i;
 			}
 		}
@@ -413,7 +422,7 @@ var Deck = (function () {
 				}
 			});
 		}
-		var res = workpilemovecheck(workpile[workpile.length - 1]);
+		workpileclasscheck(workpile[workpile.length - 1]);
 		if (hive.length > 0 ) res = hivemovecheck(hive[hive.length - 1]);
 		$("#countworkcards").html(workpile.length);
 	}
@@ -542,7 +551,7 @@ var Deck = (function () {
 					$("#countcards"+result).html(gardencards[result].length);
 					workpile.splice(-1,1);
 					$("#countworkcards").html(workpile.length);
-					if (workpile.length > 0) var res = workpilemovecheck(workpile[workpile.length - 1]);
+					if (workpile.length > 0) workpileclasscheck(workpile[workpile.length - 1]);
 					movecount = movecount + 1;
 					if (gardencards[0].length === 0 && gardencards[1].length === 0 && gardencards[2].length === 0 && gardencards[3].length === 0 && gardencards[4].length === 0 && gardencards[5].length === 0 && hive.length === 0 && pack.length === 0 && workpile.length === 0)
 						swal({
