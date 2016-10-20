@@ -915,6 +915,7 @@ var Deck = (function () {
 				}
 				if (i === 51) {
 					$("#countworkcards").html(workpile.length);
+					hiveclasscheck(hive[9]);
 					next();
 				}
 			});
