@@ -666,7 +666,7 @@ var Deck = (function () {
 						case -1:break;
 					}
 					movecount = movecount + 1;
-					if (gardencards[0].length === 0 && gardencards[1].length === 0 && gardencards[2].length === 0 && gardencards[3].length === 0 && gardencards[4].length === 0 && gardencards[5].length === 0 && hive.length === 0 && pack.length === 0 && workpile.length === 0)
+					if (gardencards[0].length === 0 && gardencards[1].length === 0 && gardencards[2].length === 0 && gardencards[3].length === 0 && gardencards[4].length === 0 && gardencards[5].length === 0 && hive.length === 0 && pack.length === 0 && workpile.length === 0) {
 						swal({
 							title: "<h4 id='swalgoedgedaan'>Goed gedaan!</h4>",
 							imageUrl: "Cards.png",
@@ -674,6 +674,9 @@ var Deck = (function () {
 							showConfirmButton: true,
 							html: true
 						});
+						if (gamescore > highestscore) highestscore = gamescore;
+						$("#hiscore").html(highestscore);
+					}
 					self.animateTo({
 						delay: 1000,
 						duration: 250,
