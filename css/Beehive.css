@@ -498,3 +498,27 @@ button#Beehive:active {
 button::-moz-focus-inner {
   border: 0;
 }
+table#score {
+   margin-top: 10px;
+   margin-left: 10px;
+   margin-bottom: 10px;
+   margin-right: 10px;
+   position: absolute;
+   top: 250px;
+   left: -150px;
+   width: 300px;
+}
+table td.name {
+   font-family: "Alice Regular", cursive;
+   color: white;
+   font-size: 1em;
+   font-weight: bold;
+   text-align: center;
+}
+table td.score {
+   font-family: "Alice Regular", cursive;
+   color: white;
+   font-size: 1em;
+   font-weight: bold;
+   text-align: center;
+}
