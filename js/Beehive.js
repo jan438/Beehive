@@ -536,6 +536,8 @@ var Deck = (function () {
 					if (workpile.length > 0) workpileclasscheck(workpile[workpile.length - 1]);
 					$("#counthivecards").html("Hive:" + hive.length);
 					movecount = movecount + 1;
+					gamescore = gamescore + 2000;
+					$("#gamescore").html(gamescore);
 					if (gardencards[0].length === 0 && gardencards[1].length === 0 && gardencards[2].length === 0 && gardencards[3].length === 0 && gardencards[4].length === 0 && gardencards[5].length === 0 && hive.length === 0 && pack.length === 0 && workpile.length === 0)
 						swal({
 							title: "<h4 id='swalgoedgedaan'>Goed gedaan!</h4>",
@@ -655,6 +657,8 @@ var Deck = (function () {
 								hiveclasscheck(hive[hive.length - 1]);
 							}
 							$("#counthivecards").html("Hive:" + hive.length);
+							gamescore = gamescore + 2000;
+							$("#gamescore").html(gamescore);
 							break;
 						case 2: workpile.splice(-1,1);
 							$("#countworkcards").html(workpile.length);
@@ -902,6 +906,8 @@ var Deck = (function () {
 			gardencards = [[],[],[],[],[],[]];
 			movecount = 0;
 			resetcount = 0;
+			gamescore = 0;
+			$("#gamescore").html(gamescore);
 			var cards = _deck4.cards;
 			var len = cards.length;
 			__fontSize = fontSize();
