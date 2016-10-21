@@ -34,6 +34,8 @@ const deltaxposition = 25;
 const deltayposition = 25;
 var movecount = 0;
 var resetcount = 0;
+var highestscore = 0;
+var gamescore;
 function reset() {
 //	console.log("Reset");
 	workpilez = 0;
